@@ -16,7 +16,9 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
@@ -48,6 +50,7 @@ fun PantallaInscripcion(modifier: Modifier = Modifier){
     var nombre by rememberSaveable { mutableStateOf("") }
     var alias by rememberSaveable { mutableStateOf("") }
     var profesion by rememberSaveable { mutableStateOf("") }
+    val participantes = remember { mutableStateListOf<Participante>() }
     val formularioValido = nombre.isNotBlank() && alias.isNotBlank() && profesion.isNotBlank()
 
     Column(
@@ -90,6 +93,12 @@ fun PantallaInscripcion(modifier: Modifier = Modifier){
             }
         ) {
             Text("Añadir participante")
+        }
+
+        Text("Participantes inscritos: ${participantes.size}")
+
+        if (participantes.isEmpty()) {
+            Text("Todavía no hay participantes")
         }
     }
 }
