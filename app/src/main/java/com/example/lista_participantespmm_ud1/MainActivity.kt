@@ -89,7 +89,17 @@ fun PantallaInscripcion(modifier: Modifier = Modifier){
             enabled = formularioValido,
             modifier = Modifier.fillMaxWidth(),
             onClick = {
-
+                if (formularioValido) {
+                    val nuevo = Participante(
+                        nombre = nombre.trim(),
+                        alias = alias.trim(),
+                        profesion = profesion.trim()
+                    )
+                    participantes.add(nuevo)
+                    nombre = ""
+                    alias = ""
+                    profesion = ""
+                }
             }
         ) {
             Text("Añadir participante")
