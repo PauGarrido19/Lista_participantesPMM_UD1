@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
@@ -47,6 +48,7 @@ fun PantallaInscripcion(modifier: Modifier = Modifier){
     var nombre by rememberSaveable { mutableStateOf("") }
     var alias by rememberSaveable { mutableStateOf("") }
     var profesion by rememberSaveable { mutableStateOf("") }
+    val formularioValido = nombre.isNotBlank() && alias.isNotBlank() && profesion.isNotBlank()
 
     Column(
         modifier = modifier
@@ -79,6 +81,16 @@ fun PantallaInscripcion(modifier: Modifier = Modifier){
             label = { Text("Profesión") },
             modifier = Modifier.fillMaxWidth()
         )
+
+        Button(
+            enabled = formularioValido,
+            modifier = Modifier.fillMaxWidth(),
+            onClick = {
+
+            }
+        ) {
+            Text("Añadir participante")
+        }
     }
 }
 
