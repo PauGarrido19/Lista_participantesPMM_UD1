@@ -138,8 +138,8 @@ fun TarjetaParticipante(participante: Participante) {
 
 @Preview(showBackground = true)
 @Composable
-fun GreetingPreview() {
-    Lista_participantesPMM_UD1Theme {
-
+fun PantallaInscripcionPreview() {
+    MaterialTheme {
+        PantallaInscripcion()
     }
 }
