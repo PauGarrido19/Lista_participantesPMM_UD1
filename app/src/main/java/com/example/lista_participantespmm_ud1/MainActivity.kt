@@ -13,6 +13,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.lista_participantespmm_ud1.ui.theme.Lista_participantesPMM_UD1Theme
 
+data class Participante(
+    val nombre: String,
+    val alias: String,
+    val profesion: String
+)
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,11 +30,7 @@ class MainActivity : ComponentActivity() {
     }
 }
 
-data class Participante(
-    val nombre: String,
-    val alias: String,
-    val profesion: String
-)
+
 
 @Preview(showBackground = true)
 @Composable
