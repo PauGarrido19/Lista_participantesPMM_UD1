@@ -4,8 +4,13 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -15,6 +20,7 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import com.example.lista_participantespmm_ud1.ui.theme.Lista_participantesPMM_UD1Theme
 
 data class Participante(
@@ -28,7 +34,9 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             Lista_participantesPMM_UD1Theme {
-
+                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
+                    PantallaInscripcion(modifier = Modifier.padding(innerPadding))
+                }
             }
         }
     }
@@ -39,6 +47,39 @@ fun PantallaInscripcion(modifier: Modifier = Modifier){
     var nombre by rememberSaveable { mutableStateOf("") }
     var alias by rememberSaveable { mutableStateOf("") }
     var profesion by rememberSaveable { mutableStateOf("") }
+
+    Column(
+        modifier = modifier
+            .fillMaxSize()
+            .padding(16.dp),
+        verticalArrangement = Arrangement.spacedBy(12.dp)
+    ) {
+        Text(
+            text = "Inscripción al torneo",
+            style = MaterialTheme.typography.headlineSmall
+        )
+
+        OutlinedTextField(
+            value = nombre,
+            onValueChange = { nombre = it },
+            label = { Text("Nombre") },
+            modifier = Modifier.fillMaxWidth()
+        )
+
+        OutlinedTextField(
+            value = alias,
+            onValueChange = { alias = it },
+            label = { Text("Alias") },
+            modifier = Modifier.fillMaxWidth()
+        )
+
+        OutlinedTextField(
+            value = profesion,
+            onValueChange = { profesion = it },
+            label = { Text("Profesión") },
+            modifier = Modifier.fillMaxWidth()
+        )
+    }
 }
 
 
